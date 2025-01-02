@@ -9,8 +9,8 @@ export default defineConfig({
     sourcemap: false,
   },
   server: {
-    open: true, // Abre el navegador automáticamente
-    port: 3000, // Cambia el puerto si lo necesitas
+    open: true,
+    port: 3000,
   },
 });
 
