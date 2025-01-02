@@ -1,11 +1,9 @@
 export default {
   preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  testEnvironment: 'jest-environment-jsdom',
+  setupFilesAfterEnv: ['@testing-library/jest-dom'],
   moduleNameMapper: {
-    '\\.(css|scss|less)$': 'identity-obj-proxy', 
-    '\\.(svg|jpg|jpeg|png|gif)$': '<rootDir>/__mocks__/fileMock.ts', 
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 };
-
