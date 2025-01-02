@@ -1,50 +1,126 @@
-# React + TypeScript + Vite
+# React Redux Refresh
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación de ejemplo que utiliza **React**, **Redux Toolkit** y **Vite** para demostrar un flujo de trabajo moderno de desarrollo. Incluye una integración completa de pruebas automatizadas con **Jest** y **Testing Library**.
 
-Currently, two official plugins are available:
+## 🚀 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚛️ React para la creación de interfaces de usuario.
+- 🛠️ Redux Toolkit para el manejo de estado global.
+- ⚡ Vite como herramienta de desarrollo ultrarrápida.
+- ✅ Configuración de pruebas automatizadas con Jest y Testing Library.
+- 📦 Estructura escalable para un CRUD en React.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 📋 Requisitos previos
 
-- Configure the top-level `parserOptions` property like this:
+Antes de empezar, asegúrate de tener instalados los siguientes requisitos:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Node.js** (versión 16 o superior).
+- **pnpm** como gestor de paquetes (instalable con `npm install -g pnpm`).
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🛠️ Instalación
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/Neiland85/react-redux-refresh.git
+
+Navega al directorio del proyecto:
+bash
+Copiar código
+cd react-redux-refresh/crud-react-refresh
+Instala las dependencias:
+Instala las dependencias:
+bash
+Copiar código
+pnpm install
+
+🚀 Scripts
+🚀 Scripts
+Desarrollo
+
+Inicia el servidor de desarrollo:
+bash
+Copiar código
+pnpm dev
+
+Construye la aplicación para producción:
+Copiar código
+bash
+Copiar código
+pnpm build
+
+Ejecuta las pruebas automatizadas:
+bash
+bash
+Copiar código
+pnpm test
+
+Limpia la caché de Jest, si es necesario:
+bash
+Copiar código
+pnpm jest --clearCache
+
+Este proyecto utiliza Jest y Testing Library para pruebas automatizadas.
+
+bash
+Copiar código
+src/components/**tests__/
+
+Ejemplo: Counter.test.tsx contiene un test del componente Counter que verifica el renderizado y las interacciones con botones.
+🌳 Estructura del proyecto
+bash
+Copiar código
+crud-react-refresh/
+
+bash
+Copiar código
+src/components/**tests__/
+Ejemplo: Counter.test.tsx contiene un test del componente Counter que verifica el renderizado y las interacciones con botones.
+
+🌳 Estructura del proyecto
+bash
+Copiar código
+crud-react-refresh/
+│
+├── src/
+🤝 Contribuciones
+│   ├── components/     # Componentes reutilizables
+│   │   └── **tests__/  # Archivos de pruebas para los componentes
+Haz un fork del repositorio.
+│   ├── App.tsx         # Componente principal
+bash
+Copiar código
+git checkout -b feature/nueva-funcionalidad
+Realiza los cambios y asegúrate de que todas las pruebas pasen.
+└── vite.config.ts      # Configuración de Vite
+bash
+Copiar código
+git commit -m "Descripción clara de los cambios"
+Envía un pull request a la rama main.
+ℹ️ Notas adicionales
+bash
+Asegúrate de mantener tus dependencias actualizadas usando:
+bash
+Copiar código
+pnpm update
+📝 Licencia
+Copiar código
+git commit -m "Descripción clara de los cambios"
+Envía un pull request a la rama main.
+ℹ️ Notas adicionales
+Este proyecto está configurado para abrir automáticamente el servidor en el navegador en el puerto 3000.
+Asegúrate de mantener tus dependencias actualizadas usando:
+bash
+Copiar código
+pnpm update
+📝 Licencia
+Este proyecto está bajo la Licencia MIT. ¡Siéntete libre de usarlo y modificarlo como desees!
+
+css
+Copiar código
+
+Copia este contenido en el archivo **README.md** en la raíz del proyecto. Si necesitas agregar algo más, ¡avísame! ��
