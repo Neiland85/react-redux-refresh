@@ -119,8 +119,3 @@ Copiar código
 pnpm update
 📝 Licencia
 Este proyecto está bajo la Licencia MIT. ¡Siéntete libre de usarlo y modificarlo como desees!
-
-css
-Copiar código
-
-Copia este contenido en el archivo **README.md** en la raíz del proyecto. Si necesitas agregar algo más, ¡avísame! ��
