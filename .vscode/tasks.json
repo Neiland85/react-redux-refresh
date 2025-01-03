@@ -1,0 +1,36 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "ts-jest-config-init",
+			"command": "npx",
+			"args": [
+				"ts-jest",
+				"config:init"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/crud-react-refresh"
+			},
+			"presentation": {
+				"reveal": "silent"
+			}
+		},
+		{
+			"type": "shell",
+			"label": "npm-install",
+			"command": "npm",
+			"args": [
+				"install",
+				"react-router-dom",
+				"@types/react-router-dom"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/crud-react-refresh"
+			},
+			"presentation": {
+				"reveal": "silent"
+			}
+		}
+	]
+}

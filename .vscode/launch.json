@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch npm cache clean",
+      "program": "npm",
+      "args": [
+        "cache",
+        "clean",
+        "--force"
+      ],
+      "cwd": "${workspaceFolder}/crud-react-refresh",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch ts-jest config:show",
+      "program": "${workspaceFolder}/crud-react-refresh/node_modules/.bin/ts-jest",
+      "args": [
+        "config:show"
+      ],
+      "cwd": "${workspaceFolder}/crud-react-refresh",
+      "runtimeExecutable": "npx",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
