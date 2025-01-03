@@ -1,0 +1,25 @@
+[
+  {
+    "id": "1",
+    "name": "Zapato Deportivo A",
+    "brand": "Nike",
+    "size": 42,
+    "price": 120,
+    "stock": 10,
+    "image": "/images/shoe1.jpg",
+    "description": "Zapato deportivo ideal para correr.",
+    "category": "Deportivo"
+  },
+  {
+    "id": "2",
+    "name": "Zapato Casual B",
+    "brand": "Adidas",
+    "size": 40,
+    "price": 90,
+    "stock": 5,
+    "image": "/images/shoe2.jpg",
+    "description": "Zapato casual cómodo y moderno.",
+    "category": "Casual"
+  }
+]
+
