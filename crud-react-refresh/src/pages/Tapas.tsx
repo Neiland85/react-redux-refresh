@@ -4,15 +4,16 @@ const Tapas = () => {
   const [tapas, setTapas] = useState([]);
 
   useEffect(() => {
-    // Fetch de datos simulados de tapas
-    fetch("/mock/tapas.json")
+    const API_URL = import.meta.env.VITE_BACKEND_URL;
+    fetch(`${API_URL}`)
       .then((res) => res.json())
-      .then((data) => setTapas(data));
+      .then((data) => setTapas(data))
+      .catch((error) => console.error("Error al cargar las tapas:", error));
   }, []);
 
   const votar = (id) => {
-    const user = JSON.parse(localStorage.getItem("user")); // Verifica si hay un usuario logueado
-    const votosGuardados = JSON.parse(localStorage.getItem("votos")) || {}; // Obtiene los votos existentes
+    const user = JSON.parse(localStorage.getItem("user")); 
+    const votosGuardados = JSON.parse(localStorage.getItem("votos")) || {}; 
 
     if (!user) {
       alert("Debes iniciar sesión para votar.");

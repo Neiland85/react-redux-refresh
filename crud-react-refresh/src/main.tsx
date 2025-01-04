@@ -1,21 +1,20 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
 import Home from "./pages/Home";
 import Tapas from "./pages/Tapas";
 import Resultados from "./pages/Resultados";
 import Registro from "./pages/Registro";
 import Auth from "./pages/Auth";
+import Restaurant from "./pages/Restaurant";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const user = localStorage.getItem("user");
   return user ? children : <Navigate to="/auth" />;
 };
 
-ReactDOM.render(
-  <Provider store={store}>
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -30,9 +29,8 @@ ReactDOM.render(
         />
         <Route path="/resultados" element={<Resultados />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/restaurant" element={<Restaurant />} />
       </Routes>
     </Router>
-  </Provider>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
-
