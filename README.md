@@ -29,61 +29,39 @@ Antes de empezar, asegúrate de tener instalados los siguientes requisitos:
    git clone https://github.com/Neiland85/react-redux-refresh.git
 
 Navega al directorio del proyecto:
-bash
-Copiar código
 cd react-redux-refresh/crud-react-refresh
-Instala las dependencias:
-Instala las dependencias:
-bash
-Copiar código
+Instala las dependencias: 
 pnpm install
 
-🚀 Scripts
 🚀 Scripts
 Desarrollo
 
 Inicia el servidor de desarrollo:
-bash
-Copiar código
 pnpm dev
 
 Construye la aplicación para producción:
-Copiar código
-bash
-Copiar código
 pnpm build
 
 Ejecuta las pruebas automatizadas:
-bash
-bash
-Copiar código
 pnpm test
 
 Limpia la caché de Jest, si es necesario:
-bash
-Copiar código
 pnpm jest --clearCache
 
 Este proyecto utiliza Jest y Testing Library para pruebas automatizadas.
 
-bash
-Copiar código
 src/components/**tests__/
 
 Ejemplo: Counter.test.tsx contiene un test del componente Counter que verifica el renderizado y las interacciones con botones.
 🌳 Estructura del proyecto
-bash
-Copiar código
+
 crud-react-refresh/
 
-bash
-Copiar código
 src/components/**tests__/
 Ejemplo: Counter.test.tsx contiene un test del componente Counter que verifica el renderizado y las interacciones con botones.
 
 🌳 Estructura del proyecto
-bash
-Copiar código
+
 crud-react-refresh/
 │
 ├── src/
@@ -92,30 +70,25 @@ crud-react-refresh/
 │   │   └── **tests__/  # Archivos de pruebas para los componentes
 Haz un fork del repositorio.
 │   ├── App.tsx         # Componente principal
-bash
-Copiar código
 git checkout -b feature/nueva-funcionalidad
 Realiza los cambios y asegúrate de que todas las pruebas pasen.
 └── vite.config.ts      # Configuración de Vite
-bash
-Copiar código
 git commit -m "Descripción clara de los cambios"
 Envía un pull request a la rama main.
+
 ℹ️ Notas adicionales
-bash
+
 Asegúrate de mantener tus dependencias actualizadas usando:
-bash
-Copiar código
 pnpm update
+
 📝 Licencia
-Copiar código
 git commit -m "Descripción clara de los cambios"
 Envía un pull request a la rama main.
+
 ℹ️ Notas adicionales
 Este proyecto está configurado para abrir automáticamente el servidor en el navegador en el puerto 3000.
 Asegúrate de mantener tus dependencias actualizadas usando:
-bash
-Copiar código
 pnpm update
+
 📝 Licencia
 Este proyecto está bajo la Licencia MIT. ¡Siéntete libre de usarlo y modificarlo como desees!
