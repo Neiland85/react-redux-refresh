@@ -4,35 +4,52 @@ const Tapas = () => {
   const [tapas, setTapas] = useState([]);
 
   useEffect(() => {
+ feature/remove-redux-adaptation
     const API_URL = import.meta.env.VITE_BACKEND_URL;
     fetch(`${API_URL}`)
+
+    // Fetch inicial para obtener la lista de tapas desde el backend
+    fetch("http://localhost:4000/tapas")
+ main
       .then((res) => res.json())
       .then((data) => setTapas(data))
       .catch((error) => console.error("Error al cargar las tapas:", error));
   }, []);
 
   const votar = (id) => {
+ feature/remove-redux-adaptation
     const user = JSON.parse(localStorage.getItem("user")); 
     const votosGuardados = JSON.parse(localStorage.getItem("votos")) || {}; 
+
+    const user = JSON.parse(localStorage.getItem("user")); // Verifica si hay un usuario logueado
+ main
 
     if (!user) {
       alert("Debes iniciar sesión para votar.");
       return;
     }
 
-    if (votosGuardados[user.username]?.includes(id)) {
-      alert("Ya has votado por esta tapa.");
-      return;
-    }
-
-    // Registrar el voto
-    const nuevosVotos = {
-      ...votosGuardados,
-      [user.username]: [...(votosGuardados[user.username] || []), id],
-    };
-
-    localStorage.setItem("votos", JSON.stringify(nuevosVotos));
-    alert(`Voto registrado para la tapa con ID: ${id}`);
+    // Enviar el voto al backend
+    fetch("http://localhost:4000/votar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message === "Voto registrado") {
+          setTapas(data.tapas); // Actualizar la lista de tapas con los nuevos votos
+          alert("¡Voto registrado con éxito!");
+        } else {
+          alert("Error al registrar el voto. Intenta nuevamente.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al registrar el voto:", error);
+        alert("Hubo un error al registrar tu voto. Inténtalo más tarde.");
+      });
   };
 
   return (
@@ -42,7 +59,7 @@ const Tapas = () => {
         {tapas.map((tapa) => (
           <li key={tapa.id}>
             <h2>{tapa.nombre}</h2>
-            <p>{tapa.descripcion}</p>
+            <p>Votos: {tapa.votos}</p>
             <img src={tapa.imagen} alt={tapa.nombre} />
             <button onClick={() => votar(tapa.id)}>Votar</button>
           </li>
