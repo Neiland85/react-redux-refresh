@@ -30,7 +30,7 @@ Antes de empezar, asegúrate de tener instalados los siguientes requisitos:
 
 Navega al directorio del proyecto:
 cd react-redux-refresh/crud-react-refresh
-Instala las dependencias: 
+Instala las dependencias:
 pnpm install
 
 🚀 Scripts

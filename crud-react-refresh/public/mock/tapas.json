@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "nombre": "Tapa de Pulpo",
+    "descripcion": "Pulpo a la gallega con un toque moderno.",
+    "imagen": "/images/tapa1.jpg",
+    "votos": 0
+  },
+  {
+    "id": "2",
+    "nombre": "Croquetas de Jamón",
+    "descripcion": "Deliciosas croquetas caseras.",
+    "imagen": "/images/tapa2.jpg",
+    "votos": 0
+  }
+]
+
