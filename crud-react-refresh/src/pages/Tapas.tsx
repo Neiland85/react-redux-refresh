@@ -4,13 +4,33 @@ const Tapas = () => {
   const [tapas, setTapas] = useState([]);
 
   useEffect(() => {
+    // Fetch de datos simulados de tapas
     fetch("/mock/tapas.json")
       .then((res) => res.json())
       .then((data) => setTapas(data));
   }, []);
 
   const votar = (id) => {
-    // Simula el envío de un voto
+    const user = JSON.parse(localStorage.getItem("user")); // Verifica si hay un usuario logueado
+    const votosGuardados = JSON.parse(localStorage.getItem("votos")) || {}; // Obtiene los votos existentes
+
+    if (!user) {
+      alert("Debes iniciar sesión para votar.");
+      return;
+    }
+
+    if (votosGuardados[user.username]?.includes(id)) {
+      alert("Ya has votado por esta tapa.");
+      return;
+    }
+
+    // Registrar el voto
+    const nuevosVotos = {
+      ...votosGuardados,
+      [user.username]: [...(votosGuardados[user.username] || []), id],
+    };
+
+    localStorage.setItem("votos", JSON.stringify(nuevosVotos));
     alert(`Voto registrado para la tapa con ID: ${id}`);
   };
 
