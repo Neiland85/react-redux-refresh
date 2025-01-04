@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const Resultados = () => {
-  const [resultados, setResultados] = useState({});
+interface ResultadoProps {
+  id: string;
+  votos: number;
+}
 
-  useEffect(() => {
-    fetch("/mock/resultados.json")
-      .then((res) => res.json())
-      .then((data) => setResultados(data));
-  }, []);
-
+const Resultados = ({ resultados }: { resultados: ResultadoProps[] }) => {
   return (
-    <div>
-      <h1>Resultados del Ganxotapa</h1>
-      <ul>
-        {Object.entries(resultados).map(([id, votos]) => (
-          <li key={id}>Tapa ID: {id} - Votos: {votos}</li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {resultados.map(({ id, votos }) => (
+        <li key={id}>
+          Tapa ID: {id} - Votos: {votos}
+        </li>
+      ))}
+    </ul>
   );
 };
 

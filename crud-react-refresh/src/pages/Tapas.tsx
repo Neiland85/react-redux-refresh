@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
 
+interface Tapa {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  imagen: string;
+}
+
 const Tapas = () => {
-  const [tapas, setTapas] = useState([]);
+  const [tapas, setTapas] = useState<Tapa[]>([]);
 
   useEffect(() => {
-    const API_URL = import.meta.env.VITE_BACKEND_URL;
-    fetch(`${API_URL}`)
+    fetch("http://localhost:4000/tapas")
       .then((res) => res.json())
-      .then((data) => setTapas(data))
-      .catch((error) => console.error("Error al cargar las tapas:", error));
+      .then((data: Tapa[]) => setTapas(data));
   }, []);
 
-  const votar = (id) => {
-    const user = JSON.parse(localStorage.getItem("user")); 
-    const votosGuardados = JSON.parse(localStorage.getItem("votos")) || {}; 
+  const votar = (id: string) => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const votosGuardados = JSON.parse(localStorage.getItem("votos") || "{}");
 
     if (!user) {
       alert("Debes iniciar sesión para votar.");
