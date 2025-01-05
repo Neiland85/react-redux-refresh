@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 interface Tapa {
-  id: string;
+  id: number;
   nombre: string;
   descripcion: string;
   imagen: string;
@@ -13,31 +13,29 @@ const Tapas = () => {
   useEffect(() => {
     fetch("http://localhost:4000/tapas")
       .then((res) => res.json())
-      .then((data: Tapa[]) => setTapas(data));
+      .then((data: Tapa[]) => setTapas(data))
+      .catch((error) => console.error("Error al cargar las tapas:", error));
   }, []);
 
-  const votar = (id: string) => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    const votosGuardados = JSON.parse(localStorage.getItem("votos") || "{}");
+  const votar = (id: number) => {
+    const user = localStorage.getItem("user");
 
     if (!user) {
       alert("Debes iniciar sesión para votar.");
       return;
     }
 
-    if (votosGuardados[user.username]?.includes(id)) {
-      alert("Ya has votado por esta tapa.");
-      return;
-    }
-
-    // Registrar el voto
-    const nuevosVotos = {
-      ...votosGuardados,
-      [user.username]: [...(votosGuardados[user.username] || []), id],
-    };
-
-    localStorage.setItem("votos", JSON.stringify(nuevosVotos));
-    alert(`Voto registrado para la tapa con ID: ${id}`);
+    fetch("http://localhost:4000/votar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) alert(`Voto registrado para la tapa ID: ${id}`);
+        else alert("Error al registrar el voto. Inténtalo de nuevo.");
+      })
+      .catch(() => alert("Hubo un error. Inténtalo más tarde."));
   };
 
   return (
@@ -58,4 +56,3 @@ const Tapas = () => {
 };
 
 export default Tapas;
-
