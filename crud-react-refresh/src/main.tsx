@@ -9,9 +9,9 @@ import Auth from "./pages/Auth";
 
 // Datos de ejemplo para resultados
 const resultadosMock = [
-  { id: "1", votos: 12 },
-  { id: "2", votos: 8 },
-  { id: "3", votos: 15 },
+  { id: 1, votos: 12 },
+  { id: 2, votos: 8 },
+  { id: 3, votos: 15 },
 ];
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
