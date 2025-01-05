@@ -12,20 +12,29 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+interface ResultadoProps {
+  id: string;
+  votos: number;
+}
+
 const Resultados = () => {
-  const [resultados, setResultados] = useState({});
-  const [labels, setLabels] = useState([]);
-  const [data, setData] = useState([]);
+  const [resultados, setResultados] = useState<ResultadoProps[]>([]);
+  const [labels, setLabels] = useState<string[]>([]);
+  const [data, setData] = useState<number[]>([]);
 
   useEffect(() => {
     fetch("/mock/resultados.json")
       .then((res) => res.json())
       .then((data) => {
-        setResultados(data);
+        const resultadosArray = Object.entries(data).map(([id, votos]) => ({
+          id,
+          votos: votos as number,
+        }));
+        setResultados(resultadosArray);
 
         // Extraer etiquetas y datos para el gráfico
-        const labels = Object.keys(data).map((id) => `Tapa ID: ${id}`);
-        const values = Object.values(data);
+        const labels = resultadosArray.map((resultado) => `Tapa ID: ${resultado.id}`);
+        const values = resultadosArray.map((resultado) => resultado.votos);
 
         setLabels(labels);
         setData(values);
@@ -49,7 +58,7 @@ const Resultados = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        position: "top" as const,
       },
       title: {
         display: true,
@@ -62,6 +71,13 @@ const Resultados = () => {
     <div>
       <h1>Resultados del Ganxotapa</h1>
       <Bar data={chartData} options={chartOptions} />
+      <ul>
+        {resultados.map(({ id, votos }) => (
+          <li key={id}>
+            Tapa ID: {id} - Votos: {votos}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

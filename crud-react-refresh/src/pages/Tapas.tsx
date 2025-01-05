@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 
+interface Tapa {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  imagen: string;
+  votos: number;
+}
+
 const Tapas = () => {
-  const [tapas, setTapas] = useState([]);
+  const [tapas, setTapas] = useState<Tapa[]>([]);
 
   useEffect(() => {
-    // Fetch inicial para obtener la lista de tapas desde el backend
     fetch("http://localhost:4000/tapas")
       .then((res) => res.json())
-      .then((data) => setTapas(data))
+      .then((data: Tapa[]) => setTapas(data))
       .catch((error) => console.error("Error al cargar las tapas:", error));
   }, []);
 
-  const votar = (id) => {
-    const user = JSON.parse(localStorage.getItem("user")); // Verifica si hay un usuario logueado
+  const votar = (id: string) => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const votosGuardados = JSON.parse(localStorage.getItem("votos") || "{}");
 
     if (!user) {
       alert("Debes iniciar sesión para votar.");

@@ -1,16 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
-import { increment, decrement } from '../redux/slices/counterSlice';
+import { useState } from "react";
 
 const useCounter = () => {
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
-
-  const incrementCounter = () => dispatch(increment());
-  const decrementCounter = () => dispatch(decrement());
-
-  return { count, incrementCounter, decrementCounter };
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => setCount((prev) => prev - 1);
+  return { count, increment, decrement };
 };
 
 export default useCounter;
-

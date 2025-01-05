@@ -1,15 +1,9 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import store from '../../redux/store';
-import Counter from '../Counter';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import Counter from "../Counter";
 
-test('renders Counter component and handles actions', () => {
-  render(
-    <Provider store={store}>
-      <Counter />
-    </Provider>
-  );
+test("renders Counter component and handles actions", () => {
+  render(<Counter />);
 
   // Verifica que el componente se renderiza
   expect(screen.getByText(/Counter Component/i)).toBeInTheDocument();
@@ -25,4 +19,3 @@ test('renders Counter component and handles actions', () => {
   fireEvent.click(screen.getByText(/Decrement/i));
   expect(screen.getByText(/Count: 0/i)).toBeInTheDocument();
 });
-
